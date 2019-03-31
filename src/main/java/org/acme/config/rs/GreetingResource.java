@@ -17,6 +17,8 @@ import java.util.Set;
 @Produces(MediaType.TEXT_PLAIN)
 public class GreetingResource {
 
+    @ConfigProperty(name = "greeting.static.message")
+    private String STATIC_MESSAGE;
 
     @ConfigProperty(name = "greeting.message")
     private String message;
@@ -63,6 +65,12 @@ public class GreetingResource {
     @Path("date")
     public Computer computer() {
         return computer;
+    }
+
+    @GET
+    @Path("static")
+    public String staticConfig() {
+        return STATIC_MESSAGE;
     }
 
 }
